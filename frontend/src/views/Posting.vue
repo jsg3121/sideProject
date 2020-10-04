@@ -2,7 +2,7 @@
   <div class="posting-container">
     <h1>게시판</h1>
     <div class="inner-container">
-      <v-simple-table>
+      <v-simple-table dark>
         <template v-slot:default>
           <thead>
             <tr>
@@ -28,18 +28,31 @@
 
 <script>
 export default {
-  created () {
-    this.$http.get('/posting').then((response) => {
-      this.posting = response.data
-    })
+  created() {
+    this.$http.get("/posting").then((response) => {
+      this.posting = response.data;
+    });
   },
-  data () {
+  data() {
     return {
-      posting: []
-    }
-  }
-}
+      posting: [],
+    };
+  },
+};
 </script>
 
 <style lang="scss">
+table {
+  tbody {
+    tr {
+      td {
+        text-align: center;
+
+        &:nth-child(2) {
+          text-align: left;
+        }
+      }
+    }
+  }
+}
 </style>
