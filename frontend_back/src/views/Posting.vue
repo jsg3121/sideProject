@@ -28,17 +28,17 @@
 
 <script>
 export default {
-  created () {
-    this.$http.get('/posting').then((response) => {
-      this.posting = response.data
-    })
+  created() {
+    this.$http.get("/posting").then((response) => {
+      this.posting = response.data;
+    });
   },
-  data () {
+  data() {
     return {
-      posting: []
-    }
-  }
-}
+      posting: [],
+    };
+  },
+};
 </script>
 
 <style lang="scss">
