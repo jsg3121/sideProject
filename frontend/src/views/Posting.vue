@@ -12,7 +12,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="list in posting" :key="list.data_id">
+          <tr
+            v-for="list in posting"
+            :key="list.data_id"
+            @click="detailPosting(list.data_id)"
+          >
             <td class="text-center">{{ list.data_id }}</td>
             <td>{{ list.title }}</td>
             <td class="text-center">{{ list.user_id }}</td>
@@ -35,6 +39,14 @@ export default {
     return {
       posting: [],
     };
+  },
+  methods: {
+    detailPosting: function (data) {
+      this.$router.push({
+        name: "Detail",
+        params: { data: data },
+      });
+    },
   },
 };
 </script>
