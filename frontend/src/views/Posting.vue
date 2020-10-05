@@ -13,10 +13,10 @@
         </thead>
         <tbody>
           <tr v-for="list in posting" :key="list.data_id">
-            <td>{{ list.data_id }}</td>
+            <td class="text-center">{{ list.data_id }}</td>
             <td>{{ list.title }}</td>
-            <td>{{ list.user_id }}</td>
-            <td>{{ list.upload_date }}</td>
+            <td class="text-center">{{ list.user_id }}</td>
+            <td class="text-center">{{ list.upload_date }}</td>
           </tr>
         </tbody>
       </v-simple-table>
@@ -40,17 +40,4 @@ export default {
 </script>
 
 <style lang="scss">
-table {
-  tbody {
-    tr {
-      td {
-        text-align: center;
-
-        &:nth-child(2) {
-          text-align: left;
-        }
-      }
-    }
-  }
-}
 </style>
