@@ -5,7 +5,6 @@ import store from "./store";
 
 // 추가된 부분
 import axios from "axios";
-
 import vuetify from "./plugins/vuetify";
 Vue.prototype.$http = axios;
 // this.$http를 통해 get, post같은 http request를 가능하게 함
