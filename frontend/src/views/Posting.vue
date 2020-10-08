@@ -1,14 +1,15 @@
 <template v-slot:default>
   <div class="posting-container">
     <h3 class="text-h3 text-center mt-5">게시판</h3>
+    <router-link :to="{ name: 'Write' }">새 글 작성하기</router-link>
     <div class="inner-container">
       <v-simple-table>
         <thead>
           <tr>
-            <th>번호</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>날짜</th>
+            <th class="text-center">번호</th>
+            <th class="text-center">제목</th>
+            <th class="text-center">작성자</th>
+            <th class="text-center">날짜</th>
           </tr>
         </thead>
         <tbody>
@@ -32,6 +33,7 @@
 export default {
   created() {
     this.$http.get("/posting").then((response) => {
+      response.data.reverse();
       this.posting = response.data;
     });
   },
