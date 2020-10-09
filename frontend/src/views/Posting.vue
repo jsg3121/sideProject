@@ -1,9 +1,17 @@
 <template v-slot:default>
   <div class="posting-container">
     <h3 class="text-h3 text-center mt-5">게시판</h3>
-    <router-link :to="{ name: 'Write' }">새 글 작성하기</router-link>
+    <v-btn color="primary" elevation="2" tile @click="newPosting">
+      새 글 작성하기
+    </v-btn>
     <div class="inner-container">
       <v-simple-table>
+        <colgroup>
+          <col width="5%" />
+          <col width="75%" />
+          <col width="10%" />
+          <col width="10%" />
+        </colgroup>
         <thead>
           <tr>
             <th class="text-center">번호</th>
@@ -47,6 +55,11 @@ export default {
       this.$router.push({
         name: "Detail",
         params: { data: data },
+      });
+    },
+    newPosting: function () {
+      this.$router.push({
+        name: "Write",
       });
     },
   },

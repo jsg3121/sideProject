@@ -1,49 +1,55 @@
 <template>
-  <div class="write-container">
-    <form method="post" @submit.stop.prevent="upload">
-      <div class="write_title d-flex mt-10">
-        <h1>제목 :</h1>
+  <v-card
+    elevation="5"
+    outlined
+    class="write-container blue lighten-4"
+    width="80%"
+  >
+    <form method="post" @submit.stop.prevent="upload" class="text-center">
+      <div class="write_title d-flex mt-10 ml-10 align-center">
+        <h1 class="text-right mr-5">제목 :</h1>
         <input
           type="text"
           required
           name="title"
           v-model="posting.title"
-          class="elevation-3"
+          class="elevation-3 white"
         />
       </div>
-      <div class="write_title d-flex mt-10">
-        <h1>ID :</h1>
+      <div class="write_title d-flex mt-10 ml-10 align-center">
+        <h1 class="text-right mr-5">ID :</h1>
         <input
           type="text"
           required
           name="ID"
           v-model="posting.user_id"
-          class="elevation-3"
+          class="elevation-3 white"
         />
       </div>
-      <div class="write_title d-flex mt-10">
-        <h1>PW :</h1>
+      <div class="write_title d-flex mt-10 ml-10 align-center">
+        <h1 class="text-right mr-5">PW :</h1>
         <input
-          type="text"
+          type="password"
           required
           name="PW"
           v-model="posting.password"
-          class="elevation-3"
+          class="elevation-3 white"
         />
       </div>
-      <div class="write_title d-flex mt-10">
-        <h1>설명 :</h1>
-        <input
-          type="text"
+      <div class="write_title d-flex mt-10 ml-10 align-start">
+        <h1 class="text-right mr-5">설명 :</h1>
+        <textarea
           required
           name="description"
           v-model="posting.description"
-          class="elevation-3"
-        />
+          class="elevation-3 white"
+        ></textarea>
       </div>
-      <button type="submit">등록하기</button>
+      <v-btn color="primary" elevation="2" tile type="submit" class="my-10"
+        >등록하기</v-btn
+      >
     </form>
-  </div>
+  </v-card>
 </template>
 
 <script>
@@ -91,5 +97,33 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.write-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  form {
+    div {
+      h1 {
+        width: 15rem;
+      }
+
+      input {
+        width: 60rem;
+        height: 2rem;
+        padding: 3px 0 2px 10px;
+      }
+
+      textarea {
+        font-size: 1rem;
+        height: 20rem;
+        width: 60rem;
+        resize: none;
+        padding: 5px;
+      }
+    }
+  }
+}
 </style>
