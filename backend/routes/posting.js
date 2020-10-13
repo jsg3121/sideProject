@@ -26,7 +26,7 @@ router.post("/write", function (req, res) {
     parsedData.push(editData);
     fs.writeFile(myPath, JSON.stringify(parsedData), (err) => {
       if (err) throw err;
-      res.send("end");
+      res.send("upload");
     });
   });
 });
