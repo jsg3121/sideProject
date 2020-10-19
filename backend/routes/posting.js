@@ -6,6 +6,7 @@ const post = require("../data/posting_data.json");
 
 router.get("/", function (req, res) {
   const postData = post.filter((item) => {
+    //삭제처리 ( visible === false )된 게시물이 아닌것만 전송
     return item.visible === true;
   });
   res.send(postData);
@@ -46,7 +47,7 @@ router.put("/edit/:id", function (req, res) {
 
   const myPath = path.join(__dirname, "..", "data", "posting_data.json");
 
-  fs.readFile(myPath, "utf8", (err, data) => {
+  fs.readFile(myPath, "utf8", (err, data) => {  // fs모듈을 이용하여 수정
     let parsedData = JSON.parse(data);
 
     parsedData[editData.data_id - 1] = editData;

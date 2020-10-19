@@ -80,20 +80,20 @@ export default {
     return {
       detail: {},
       edit: false,
-      postingPW: "",
+      postingPW: ""
     };
   },
   methods: {
-    readPosting: async function () {
+    readPosting: async function() {
       let data = this.$route.params.data;
 
-      await this.$http.get(`/posting/detail/${data}`).then((response) => {
+      await this.$http.get(`/posting/detail/${data}`).then(response => {
         this.detail = response.data[0];
       });
       this.postingPW = this.detail.password;
       this.detail.password = "";
     },
-    editPosting: function (event) {
+    editPosting: function(event) {
       if (this.edit === false) {
         event.target.innerHTML = "저장하기";
         this.edit = true;
@@ -101,33 +101,33 @@ export default {
         let data = this.detail.data_id;
         this.$http
           .put(`/posting/edit/${data}`, this.detail)
-          .then((response) => {
+          .then(response => {
             alert("수정되었습니다.");
           })
-          .catch((error) => {
+          .catch(error => {
             alert("수정하지 못했습니다.");
           });
         this.$router.push({
-          name: "Posting",
+          name: "Posting"
         });
       }
     },
-    delPosting: function (event) {
+    delPosting: function(event) {
       let delConfirm = confirm("게시글을 삭제하시겠습니까?");
 
       if (delConfirm) {
         let data = this.detail.data_id;
         this.$http
           .put(`/posting/del/${data}`, this.detail)
-          .then((response) => {
+          .then(response => {
             alert("성공적으로 삭제되었습니다.");
           })
-          .catch((error) => {
+          .catch(error => {
             alert("게시글을 삭제하지 못했습니다.");
           });
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
