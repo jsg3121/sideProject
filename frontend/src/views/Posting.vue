@@ -1,6 +1,9 @@
 <template v-slot:default>
   <div class="posting-container">
     <h3 class="text-h3 text-center mt-5">게시판</h3>
+    <v-btn color="primary" elevation="2" tile @click="login">
+      로그인
+    </v-btn>
     <!-- 새 게시글 추가하기 버튼 -->
     <v-btn color="primary" elevation="2" tile @click="newPosting">
       새 글 작성하기
@@ -42,32 +45,36 @@
 <script>
 export default {
   created() {
-    this.$http.get("/posting").then((response) => {
+    this.$http.get("/posting").then(response => {
       response.data.reverse();
       this.posting = response.data;
     });
   },
   data() {
     return {
-      posting: [],
+      posting: []
     };
   },
   methods: {
-    detailPosting: function (data) {
+    detailPosting: function(data) {
       this.$router.push({
         name: "Detail",
-        params: { data: data },
+        params: { data: data }
       });
     },
     // 게시물 작성
-    newPosting: function () {
+    newPosting: function() {
       this.$router.push({
-        name: "Write",
+        name: "Write"
       });
     },
-  },
+    login: function() {
+      this.$router.push({
+        name: "Login"
+      });
+    }
+  }
 };
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Posting from "@/views/Posting";
 import Detail from "@/views/DetailPosting";
 import Write from "@/views/WritePosting";
+import Login from "@/views/Login";
 
 Vue.use(Router);
 
