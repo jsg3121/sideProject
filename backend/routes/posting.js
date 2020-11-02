@@ -76,6 +76,16 @@ router.put("/del/:id", function (req, res) {
       res.send("end");
     });
   });
+
+  // detail 데이터 요청
+  router.get("/loginCheck", function (req, res) {
+    const data = req.params;
+    // const detailPost = post.filter((item) => {
+    //   return item.data_id === parseInt(data);
+    // });
+    // res.send(detailPost);
+    console.log("data");
+  });
 });
 
 module.exports = router;

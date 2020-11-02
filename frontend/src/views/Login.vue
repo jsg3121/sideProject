@@ -47,15 +47,15 @@ export default {
   },
   methods: {
     login: function() {
-      // let userInfo = this.user;
-      // this.$http
-      //   .get(`/posting/loginCheck/${userInfo}`)
-      //   .then(response => {
-      //     alert("일치");
-      //   })
-      //   .catch(() => {
-      //     alert("불일치");
-      //   });
+      let userInfo = this.user;
+      this.$http
+        .get(`/posting/loginCheck`, { params: userInfo })
+        .then(response => {
+          alert("일치");
+        })
+        .catch(() => {
+          alert("불일치");
+        });
     }
   }
 };

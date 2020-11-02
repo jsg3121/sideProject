@@ -15,6 +15,11 @@ export default new Router({
       name: "Posting",
       component: Posting
     },
+    {
+      path: "/login",
+      name: "Login",
+      component: Login
+    },
     //디테일페이지
     {
       path: "/detail/:data",
