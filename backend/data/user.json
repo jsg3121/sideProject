@@ -4,5 +4,17 @@
     "user_id": "admin",
     "user_password": "0000",
     "user_grade": "admin"
+  },
+  {
+    "user_id_num": "2",
+    "user_id": "test",
+    "user_password": "0000",
+    "user_grade": "admin"
+  },
+  {
+    "user_id_num": "3",
+    "user_id": "wow",
+    "user_password": "0000",
+    "user_grade": "admin"
   }
 ]

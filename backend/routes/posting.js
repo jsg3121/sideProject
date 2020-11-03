@@ -3,6 +3,7 @@ const router = express.Router();
 const fs = require("fs");
 const path = require("path");
 const post = require("../data/posting_data.json");
+const user = require("../data/user.json");
 
 router.get("/", function (req, res) {
   const postData = post.filter((item) => {
@@ -30,6 +31,27 @@ router.post("/write", function (req, res) {
       res.send("upload");
     });
   });
+});
+
+// 로그인 체크
+router.post("/loginCheck", function (req, res) {
+  const userData = user;
+  const checkUser = req.body;
+  let check = false;
+  let connect = [];
+
+  userData.forEach((item) => {
+    if (item.user_id === checkUser.id && item.user_password === checkUser.pw) {
+      connect = item;
+      check = true;
+    }
+  });
+
+  if (check) {
+    res.send(connect);
+  } else {
+    res.send(false);
+  }
 });
 
 // detail 데이터 요청
@@ -75,16 +97,6 @@ router.put("/del/:id", function (req, res) {
       if (err) throw err;
       res.send("end");
     });
-  });
-
-  // detail 데이터 요청
-  router.get("/loginCheck", function (req, res) {
-    const data = req.params;
-    // const detailPost = post.filter((item) => {
-    //   return item.data_id === parseInt(data);
-    // });
-    // res.send(detailPost);
-    console.log("data");
   });
 });
 

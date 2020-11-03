@@ -47,14 +47,20 @@ export default {
   },
   methods: {
     login: function() {
-      let userInfo = this.user;
       this.$http
-        .get(`/posting/loginCheck`, { params: userInfo })
-        .then(response => {
-          alert("일치");
+        .post(`/posting/loginCheck`, {
+          id: this.user.user_id,
+          pw: this.user.user_pw
         })
-        .catch(() => {
-          alert("불일치");
+        .then(response => {
+          if (response.data) {
+            this.$store.commit("loginCheck", response.data);
+            this.$router.push({
+              name: "Posting"
+            });
+          } else {
+            alert("회원정보가 일치하지 않습니다.");
+          }
         });
     }
   }

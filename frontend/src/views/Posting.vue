@@ -1,8 +1,20 @@
 <template v-slot:default>
   <div class="posting-container">
     <h3 class="text-h3 text-center mt-5">게시판</h3>
-    <v-btn color="primary" elevation="2" tile @click="login">
+    <h4 v-if="this.$store.state.user">
+      {{ this.$store.state.user.user_id }}님 반갑습니다.
+    </h4>
+    <v-btn
+      v-if="this.$store.state.user == ''"
+      color="primary"
+      elevation="2"
+      tile
+      @click="login"
+    >
       로그인
+    </v-btn>
+    <v-btn v-else color="primary" elevation="2" tile @click="logout">
+      로그아웃
     </v-btn>
     <!-- 새 게시글 추가하기 버튼 -->
     <v-btn color="primary" elevation="2" tile @click="newPosting">
@@ -72,6 +84,9 @@ export default {
       this.$router.push({
         name: "Login"
       });
+    },
+    logout: function() {
+      this.$store.commit("logout");
     }
   }
 };
